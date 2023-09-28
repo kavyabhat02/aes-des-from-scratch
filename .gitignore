@@ -1,0 +1,5 @@
+tests/*
+build/
+dist/
+AESDESecure.egg-info/
+AESDESecure/__pycache__/*

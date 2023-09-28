@@ -6,6 +6,12 @@ def permute(table, text, n):
         new_text += text[table[i] - 1]
     return new_text
 
+def getText(str_list, index):
+    text = ""
+    for i in str_list[index]:
+        text += '{:0>8}'.format(bin(ord(i))[2:])
+    return text
+
 def shift_key(key, shift):
     new_key = key[shift:] + key[0:shift]
     return new_key
@@ -29,7 +35,6 @@ def des_encrypt(plaintext, round_keys):
 
     # Perform Initial Permutation
     plaintext = permute(initial_perm_table, plaintext, 64)
-    # print(f"Plaintext after permutation: {hex(int(plaintext, 2))}")
 
     left_pt = plaintext[0:32]
     right_pt = plaintext[32:]
@@ -169,15 +174,22 @@ def des_key_encryption(key):
     return round_keys
 
 def des(plaintext, key):
+    plaintext = bin(int(plaintext, 16))[2:].zfill(64)
+    key = bin(int(key, 16))[2:].zfill(64)
     round_keys = des_key_encryption(key)
 
     for i in round_keys:
         print(hex(int(i, 2)))
+    
     ciphertext = des_encrypt(plaintext, round_keys)
     return ciphertext
 
 
 def triple_des(plaintext, key1, key2):
+    plaintext = bin(int(plaintext, 16))[2:].zfill(64)
+    key1 = bin(int(key1, 16))[2:].zfill(64)
+    key2 = bin(int(key2, 16))[2:].zfill(64)
+
     round_keys1 = des_key_encryption(key1)
     round_keys2 = des_key_encryption(key2)
 
