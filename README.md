@@ -2,7 +2,7 @@
 
 Yep, the package is named so because I like puns. 
 
-### Usage: <br>
+### Usage:
 
 #### Build
 From the root of this repository, run: <br>
